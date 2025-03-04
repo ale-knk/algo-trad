@@ -1,0 +1,220 @@
+# External data
+data/
+
+# Notebooks
+*.ipynb
+
+# Byte-compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / Packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+*.whl
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Pipenv Pipfile
+Pipfile.lock
+
+# Poetry
+poetry.lock
+poetry.toml
+
+# Pyre type checker
+.pyre/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# pytype static type analyzer
+.pytype/
+
+# Pytest
+.pytest_cache/
+.cache/
+
+# Coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache/
+coverage.xml
+*.cover
+.hypothesis/
+pytestdebug.log
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# celery
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.env.*
+# Allows including a sample env file
+!example.env
+# dotenv
+.env.local
+.env.*.local
+.env.test
+.env.production
+
+# Flask cache
+.flask_session/
+
+# Scrapy
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# pyenv
+.python-version
+
+# Editor/IDE settings
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# macOS generated files
+.Spotlight-V100
+.Trashes
+.VolumeIcon.icns
+.DS_Store
+.fseventsd/
+.TemporaryItems/
+.apdisk
+
+# Windows system files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Windows 10 cloud sync
+*.stackdump
+
+# Windows mobile device database
+!mdm/
+
+# Linux system files
+*~
+.nfs*
+
+# Logs and temporary files
+*.log
+*.out
+*.err
+*.swp
+*.swo
+*.swn
+*.bak
+*.tmp
+*.temp
+*.pid
+*.seed
+*.log.*
+
+# Profiling data
+*.prof
+
+# Yarn and npm
+node_modules/
+yarn-error.log
+yarn-debug.log*
+.pnp/
+.pnp.js
+
+# Lock files
+package-lock.json
+yarn.lock
+
+# Webpack/Parcel/Front-end build
+.next/
+.nuxt/
+out/
+dist/
+.cache/
+.parcel-cache/
+
+# Additional common directories and files
+coverage/
+coverage-final.json
+.nyc_output/
+typings/
+.flow-typed/
+jspm_packages/
+__snapshots__/
+.vscode-test/
+
+# Specific to cloud or CI/CD tools
+*.tfstate
+*.tfstate.*
+*.terraform/
+.terraform.lock.hcl
+.stack-work/
+.meteor/
+.pnp/
+node_modules/
+
+# AWS SAM/CloudFormation
+.aws-sam/
+
+# Docker
+*.env.backup
+docker-compose.override.yml
+
+# Python-specific
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Ruff cache
+.ruff_cache/
