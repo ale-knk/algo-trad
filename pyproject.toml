@@ -2,16 +2,19 @@
 name = "pytrad"
 version = "0.1.0"
 description = "Python package for algorithmic trading"
-authors = [
-    { name = "Alejandro Requena", email = "rb.jandro@gmail.com" }
-]
+authors = [{ name = "Alejandro Requena", email = "rb.jandro@gmail.com" }]
 license = { text = "MIT" }
 dependencies = [
     "matplotlib==3.10.0",
-    "numpy==2.2.3",
+    "numpy>=1.26.0,<2.1.0",
     "plotly==6.0.0",
     "nbformat==5.10.4",
-    "joblib==1.4.2"
+    "joblib==1.4.2",
+    "pandas>=2.2.3",
+    # "tensorflow>=2.18.0",
+    "gymnasium>=1.1.0",
+    # "tensorflow-probability>=0.25.0",
+    "torch==2.6.0"
 ]
 
 [tool.setuptools.packages.find]

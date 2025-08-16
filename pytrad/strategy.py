@@ -1,9 +1,8 @@
 from abc import ABC, abstractmethod
 from typing import List
 from datetime import datetime
-from pytrad.indicator import Indicator, MA, EMA, RSI, MACD, BollingerBands, AverageTrueRange
+from pytrad.indicator import Indicator, MA, EMA, RSI, MACD, BollingerBands
 from typing import List
-from pytrad.strategy import Strategy
 
 class Strategy(ABC):
     def __init__(self, name: str, indicators: List["Indicator"] = None, start_index: int = 20):

@@ -67,10 +67,10 @@ class Window:
             "low",
             "close",
             "volume",
-            "open_ret",
-            "high_ret",
-            "low_ret",
-            "close_ret",
+            "open_returns",
+            "high_returns",
+            "low_returns",
+            "close_returns",
         ]
 
         # Find indicator columns and group them by indicator type
@@ -390,6 +390,7 @@ class Window:
     def get_subwindow_by_datetime(self, target_datetime, window_size):
         """
         Returns a window ending at the last candle before the given datetime.
+        Uses binary search for improved efficiency.
 
         Args:
             target_datetime: datetime to find the window before
@@ -398,18 +399,28 @@ class Window:
         Returns:
             Window: A window of size window_size ending before target_datetime
         """
-        # Find index of last candle before target_datetime
+        # Binary search to find the last candle before target_datetime
+        left, right = 0, len(self.candles) - 1
         end_idx = None
-        for i, candle in enumerate(self.candles):
-            if candle.time > target_datetime:
-                end_idx = i - 1
-                break
+
+        while left <= right:
+            mid = (left + right) // 2
+            if self.candles[mid].time <= target_datetime:
+                # This candle could be our end_idx, keep searching right
+                end_idx = mid
+                left = mid + 1
+            else:
+                # This candle is after our target, search left
+                right = mid - 1
 
         if end_idx is None:
-            end_idx = len(self.candles) - 1
+            # No candle found before target_datetime
+            raise ValueError(f"No candles found before {target_datetime}")
 
         # Calculate start index based on window size
         start_idx = max(0, end_idx - window_size + 1)
+
+        # Check if we have enough candles
         if end_idx - start_idx + 1 < window_size:
             raise ValueError(
                 f"Insufficient data for window at {target_datetime}. Need {window_size} candles but only have {end_idx - start_idx + 1}."
@@ -445,10 +456,10 @@ class Window:
             # Volume
             "volume": [],
             # Returns (will be calculated)
-            "open_ret": [],
-            "high_ret": [],
-            "low_ret": [],
-            "close_ret": [],
+            "open_returns": [],
+            "high_returns": [],
+            "low_returns": [],
+            "close_returns": [],
         }
 
         # Fill in data from candles
@@ -483,7 +494,7 @@ class Window:
                 returns[1:] = np.log(prices[1:] / prices[:-1])
 
             # Add to the dictionary
-            window_dict[f"{price_type}_ret"] = returns.tolist()
+            window_dict[f"{price_type}_returns"] = returns.tolist()
 
         # Add indicator data if available
         if self.indicators:
@@ -652,10 +663,15 @@ class Window:
         import torch
 
         # Extract return data
-        return_columns = ["open_ret", "high_ret", "low_ret", "close_ret"]
+        return_columns = [
+            "open_returns",
+            "high_returns",
+            "low_returns",
+            "close_returns",
+        ]
         return_data = []
 
-        for i in range(len(window_dict["open_ret"])):
+        for i in range(len(window_dict["open_returns"])):
             row_data = []
             for col in return_columns:
                 try:
@@ -691,10 +707,10 @@ class Window:
             "low",
             "close",
             "volume",
-            "open_ret",
-            "high_ret",
-            "low_ret",
-            "close_ret",
+            "open_returns",
+            "high_returns",
+            "low_returns",
+            "close_returns",
         ]
 
         # Find all indicator column names in the dict

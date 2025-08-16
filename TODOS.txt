@@ -1,0 +1,2 @@
+- Verbosity en la clase Dataset para la parte de normalización. Estaría bien que incluso guardara un report de cómo ha ido todo.
+- La normalización está convertiendo returns negativos en valores positivos
